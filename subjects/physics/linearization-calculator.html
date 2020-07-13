@@ -5,7 +5,7 @@
 
 <head>
     <title>Linearization Calculator</title>
-    <link rel="stylesheet" href="https://www.andrewta.me/calculating.tools/css/styles.css">
+    <link rel="stylesheet" href="https://andrewta.me/calculating.tools/css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
 
@@ -13,20 +13,22 @@
 
 <body>
     <header>
-        <a href="https://www.andrewta.me/calculating.tools/index.html" class="logo">calculating.tools</a>
+        <a href="https://andrewta.me/calculating.tools/index.html" class="logo">calculating.tools</a>
 
         <nav>
             <ul>
 
                 <li><a href="">Basic Calculators</a></li>
 
-                <li><a href="https://www.andrewta.me/calculating.tools/directory.html">Subject Calculators</a></li>
+                <li><a href="https://andrewta.me/calculating.tools/directory.html">Subject Calculators</a></li>
 
                 <li><a href="">Contact</a></li>
             </ul>
 
         </nav>
     </header>
+
+    <h1>Physics Linearization Calculator</h1>
     <div class="rawdata">
         <table>
             <tbody id="rawtable">
@@ -36,7 +38,7 @@
                 </tr>
 
                 <tr>
-                    <td><input type="text" id="0x"> </td>
+                    <td><input type="text" id="0x" oninput="addData()"> </td>
                     <td><input type="text" id="0y" oninput="addData()"> </td>
                 </tr>
             </tbody>
@@ -45,16 +47,12 @@
         </table>
 
     </div>
-    <div class = "ans">Enter your raw data on the chart to the left</div>
+    <div class = 'tab' id="tab"></div>
+    <div style="float: right; width: 30%;">lorem</div>
 
-    <div class="tutorial">
-        <p class="ad">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur reprehenderit animi, nesciunt porro
-            odio recusandae. Quisquam
-        </p>
+    <div class="ans" id="ans">
     </div>
 
-    <br>
 
 </html>
 
@@ -64,41 +62,36 @@
 
     var rawX = [""]
     var rawY = [""]
-    var count = 10
 
 
     function addData() {
-
         var newHTML = "<tr><th>x</th><th>y</th></tr>";
         var count = 0
         for (var i = 0; i < rawX.length; i++) {
             rawX[i] = (parseFloat(document.getElementById(i + "x").value))
             rawY[i] = parseFloat(document.getElementById(i + "y").value)
 
+            ans = ""
+
+            linearizeData(deleteSpaces(rawX), deleteSpaces(rawY))
+
+
+            if ("" + rawY[rawY.length - 1] !== "NaN" || "" + rawX[rawX.length - 1] !== "NaN") {
+                var row = document.createElement("tr")
+                row.innerHTML = tableRow(rawX.length + "x") + tableRow(rawX.length + "y")
+                document.getElementById("rawtable").appendChild(row)
+
+                rawX.push("")
+                rawY.push("")
+            }
+
+
         }
-        linearizeData(deleteSpaces(rawX), deleteSpaces(rawY))
-        var row = document.createElement("tr")
-
-        console.log(rawX)
-        row.innerHTML = tableRow(rawX.length + "x") + tableRowY(rawX.length + "y")
-        console.log(document.getElementById("rawtable"))
-        console.log(row)
-        document.getElementById("rawtable").appendChild(row)
-        if (rawY[rawY.length - 1] !== NaN) {
-            console.log(rawY[rawY.length - 1])
-            rawX.push("")
-            rawY.push("")
-        }
-
-
     }
+
+
 
     function tableRow(id) {
-        return `<td><input  type= "text" id= "${id}"> </td>`
-
-    }
-
-    function tableRowY(id,) {
         return `<td><input  type= "text" id= "${id}" oninput="addData()"> </td>`
     }
 
@@ -125,7 +118,7 @@
     function deleteSpaces(arr) {
         var newArr = []
         for (var i = 0; i < arr.length; i++)
-            if (arr[i] != "")
+            if (arr[i] != "" && arr[i] + "" != "NaN")
                 newArr.push(arr[i])
         return newArr
 
@@ -164,32 +157,92 @@
 
         linearizeData(x, y)
     }
-
+    var ans = ""
 
     function linearizeData(x, y) {
-        var mostLinear = "linear"
+        if (x.length != y.length)
+            return null
+        if (x.length == 1) {
+            document.getElementById("ans").innerHTML = "Not enough data"
+            return null
+        }
+        if (x.length == 2) {
+            document.getElementById("ans").innerHTML = "Linear"
+            return null
+        }
+
+        var mostLinear = "Linear"
         var maxR = Math.abs(r(x, y))
 
         // 1/x=y or 1/y=x
         var currentR = Math.abs(r(inverseAll(x), y))
+
         if (currentR > maxR) {
-            mostLinear = "inverse"
+            mostLinear = "Inverse"
             maxR = currentR
         }
 
-        // sqrtx = y or y^2 = x
+        // sqrtx = y or Square all Y = x
         currentR = Math.abs(r(sqrtAll(x), y))
+
         if (currentR > maxR) {
-            mostLinear = "sqrt x"
+            mostLinear = "Square all Y"
             maxR = currentR
         }
-        // sqrtx = y or y^2 = x
+        // sqrtx = y or Square all Y = x
         currentR = Math.abs(r(x, sqrtAll(y)))
+
         if (currentR > maxR) {
-            mostLinear = "sqrt y"
+            mostLinear = "Square all X"
             maxR = currentR
         }
-        console.log(mostLinear)
+
+        switch (mostLinear) {
+            case ("Linear"):
+                document.getElementById('tab').innerHTML = makeTable(x, y, "x", "y")
+                break;
+
+            case ("Inverse"):
+                document.getElementById('tab').innerHTML = makeTable(x, y, "1/x", "y")
+                break;
+
+            case ("Square all X"):
+                document.getElementById('tab').innerHTML = makeTable(squareAll(x), y, "x<sup>2", "y")
+                break;
+
+            case ("Square all Y"):
+                document.getElementById('tab').innerHTML = makeTable(x, squareAll(y), "x", "y<sup>2")
+                break;
+
+        }
+        document.getElementById('tab').scrollTo(0, document.getElementById('tab').clientHeight)
+        document.getElementById("ans").innerHTML = mostLinear + " <br> r =" + maxR;
+
+        
+    }
+
+    function makeTable(x, y, xHeader, yHeader) {
+        var table = `<table>
+    <tr>
+        <th>${xHeader}</th>
+        <th>${yHeader}</th>
+    </tr>`
+        for (var i = 0; i < x.length; i++)
+            table += `
+            <tr>
+                <td><input type = "text" value = "${round(x[i])}"</input></td>
+                <td><input type = "text" value = "${round(y[i])}"</input></td>
+
+            </tr>
+        `
+
+        return table + "</table>"
+
 
     }
+    function round(num) {
+        return Math.round(num * 100) / 100
+    }
+
+    
 </script>
