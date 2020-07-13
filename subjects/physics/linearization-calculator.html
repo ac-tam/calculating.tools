@@ -1,61 +1,195 @@
 <!DOCTYPE html>
 
 <html>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <head>
-        <title>Linearization Calculator</title>
-        <link rel="stylesheet" href="C:/calculating.tools/css/styles.css">
-    </head>
+<head>
+    <title>Linearization Calculator</title>
+    <link rel="stylesheet" href="andrewta.me/calculating.tools/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
-    <body>
-        <header>
-           <a href = "C:/calculating.tools/index.html">calculating.tools</a> 
 
-            <nav>
-                <ul>
-                    
-                    <li><a href = "">Basic Calculators</a></li>
+</head>
 
-                    <li><a href = "C:/calculating.tools/directory.html">Subject Calculators</a></li>
-                    
-                    <li><a href = "">Contact</a></li>
-                </ul>
-            
-            </nav>
-        </header>
+<body>
+    <header>
+        <a href="andrewta.me/calculating.tools/index.html" class="logo">calculating.tools</a>
 
-        <p>Under Construction</p>
+        <nav>
+            <ul>
 
-        <script src="https://www.desmos.com/api/v1.5/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+                <li><a href="">Basic Calculators</a></li>
 
-        <div id="calculator" style="width: 600px; height: 400px;"></div>
-    </body>
+                <li><a href="andrewta.me/calculating.tools/directory.html">Subject Calculators</a></li>
+
+                <li><a href="">Contact</a></li>
+            </ul>
+
+        </nav>
+    </header>
+    <div class="rawdata">
+        <table>
+            <tbody id="rawtable">
+                <tr>
+                    <th>x</th>
+                    <th>y</th>
+                </tr>
+
+                <tr>
+                    <td><input type="text" id="0x"> </td>
+                    <td><input type="text" id="0y" oninput="addData()"> </td>
+                </tr>
+            </tbody>
+
+
+        </table>
+
+    </div>
+    <div class = "ans">Enter your raw data on the chart to the left</div>
+
+    <div class="tutorial">
+        <p class="ad">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur reprehenderit animi, nesciunt porro
+            odio recusandae. Quisquam
+        </p>
+    </div>
+
+    <br>
+
 </html>
 
 
 <script>
-    // https://www.desmos.com/api/v1.5/docs/index.html
-    var elt = document.getElementById('calculator');
-    var calculator = Desmos.GraphingCalculator(elt);
-    createTable([1,2,3], [1,4,9])
-    createTable([1,2,5], [1,2,3])
+    document.getElementById("0x").select();
 
-    function createTable(x, y) {
-        calculator.setExpression({
-        type: 'table',
-        columns: [
-            {
-            latex: 'x',
-            values: x
-            },
-            {
-            latex: 'y',
-            values: y,
-            }
+    var rawX = [""]
+    var rawY = [""]
+    var count = 10
 
-        ]
-        });
-        
+
+    function addData() {
+
+        var newHTML = "<tr><th>x</th><th>y</th></tr>";
+        var count = 0
+        for (var i = 0; i < rawX.length; i++) {
+            rawX[i] = (parseFloat(document.getElementById(i + "x").value))
+            rawY[i] = parseFloat(document.getElementById(i + "y").value)
+
+        }
+        linearizeData(deleteSpaces(rawX), deleteSpaces(rawY))
+        var row = document.createElement("tr")
+
+        console.log(rawX)
+        row.innerHTML = tableRow(rawX.length + "x") + tableRowY(rawX.length + "y")
+        console.log(document.getElementById("rawtable"))
+        console.log(row)
+        document.getElementById("rawtable").appendChild(row)
+        if (rawY[rawY.length - 1] !== NaN) {
+            console.log(rawY[rawY.length - 1])
+            rawX.push("")
+            rawY.push("")
+        }
+
+
+    }
+
+    function tableRow(id) {
+        return `<td><input  type= "text" id= "${id}"> </td>`
+
+    }
+
+    function tableRowY(id,) {
+        return `<td><input  type= "text" id= "${id}" oninput="addData()"> </td>`
+    }
+
+
+    function squareAll(arr) {
+        var newArr = []
+        for (var i = 0; i < arr.length; i++)
+            newArr.push(arr[i] * arr[i])
+        return newArr
+    }
+    function sqrtAll(arr) {
+        var newArr = []
+        for (var i = 0; i < arr.length; i++)
+            newArr.push(Math.sqrt(arr[i]))
+        return newArr
+    }
+    function inverseAll(arr) {
+        var newArr = []
+        for (var i = 0; i < arr.length; i++)
+            newArr.push(1 / arr[i])
+        return newArr
+    }
+
+    function deleteSpaces(arr) {
+        var newArr = []
+        for (var i = 0; i < arr.length; i++)
+            if (arr[i] != "")
+                newArr.push(arr[i])
+        return newArr
+
+    }
+    function avg(x) {
+        var sum = 0;
+        for (var i = 0; i < x.length; i++)
+            sum += x[i];
+        return sum / x.length
+
+    }
+    function standardDev(x) {
+        var mean = avg(x);
+        var standDev = 0
+        for (var i = 0; i < x.length; i++)
+            standDev += Math.pow(x[i] - mean, 2)
+        return Math.sqrt(standDev)
+    }
+    function r(x, y) {
+
+        var r = 1 / (standardDev(x) * (standardDev(y)))
+        var sum = 0;
+        var meanx = avg(x)
+        var meany = avg(y)
+        for (var i = 0; i < x.length; i++)
+            sum += (x[i] - meanx) * (y[i] - meany)
+        return r * sum
+    }
+    function linearize() {
+        var x = document.getElementById("x").value.split(",")
+        var y = document.getElementById("y").value.split(",")
+        for (var i = 0; i < x.length; i++) {
+            x[i] = parseFloat(x[i])
+            y[i] = parseFloat(y[i])
+        }
+
+        linearizeData(x, y)
+    }
+
+
+    function linearizeData(x, y) {
+        var mostLinear = "linear"
+        var maxR = Math.abs(r(x, y))
+
+        // 1/x=y or 1/y=x
+        var currentR = Math.abs(r(inverseAll(x), y))
+        if (currentR > maxR) {
+            mostLinear = "inverse"
+            maxR = currentR
+        }
+
+        // sqrtx = y or y^2 = x
+        currentR = Math.abs(r(sqrtAll(x), y))
+        if (currentR > maxR) {
+            mostLinear = "sqrt x"
+            maxR = currentR
+        }
+        // sqrtx = y or y^2 = x
+        currentR = Math.abs(r(x, sqrtAll(y)))
+        if (currentR > maxR) {
+            mostLinear = "sqrt y"
+            maxR = currentR
+        }
+        console.log(mostLinear)
+
     }
 </script>
