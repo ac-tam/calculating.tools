@@ -24,6 +24,17 @@ nav {
     float: right;
 }
 
+div {
+    width: 48%;
+    border-radius: 40px;
+    margin: 3%;
+    background: rgb(190, 214, 214);
+    color: black;
+    font-family: calibri;
+    text-align: center;
+    
+}
+
 nav ul {
     margin: 0;
     padding: 0;
@@ -68,17 +79,14 @@ html, body {
 .rawdata {
     overflow-y: auto;
     height: 500px;
+    width: 266px;
     float: left;
 }
 
-.tab {
-    overflow-y: auto;
-    width: fit-content;
-    height: 500px;
-    margin: none;
-    
-}
 
+table {
+    height: fit-content;
+}
 
 tr {
     width: 250px;
@@ -90,13 +98,14 @@ td, td input {
     height: 50px;
     border: none;
     text-align: center;
+    background: none;
 }
 
 th {
     border-bottom: 1px black solid;
     font-family: sans-serif;
     font-size: 24px;
-        width: 50%;
+    width: 50%;
     height: 50px
     ;
 }
@@ -107,4 +116,11 @@ th:nth-child(odd), td:nth-child(odd) {
 
 td {
     border-bottom: 1px black dashed;
+}
+
+
+.ans {
+
+    display: block;
+    float: left
 }

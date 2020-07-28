@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html lang="en" id="a" class="norm">
+<body onload="onaload()">
+    <header>
+        <a href="http://calculating.tools" class="logo">calculating.tools</a>
+        <link rel="stylesheet" type="text/css" href="assets/styles.css" >
+
+        <nav>
+            <ul>
+                    
+                <li><a href="">Basic Calculators</a></li>
+
+                <li><a href="http://calculating.tools/subjects/index.html">Subject Calculators</a></li>
+
+            
+                <li><a href="">Contact</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+
+    <head>
+        <title>GPA Calculator</title>
+
+    </head>
+
+
+
+    <div style="float: left; height: 23%">
+        <h1> <b>Weighted GPA Calculator</b> </h1>
+
+        
+        <input autocomplete="off" id="direct" type="text" oninput="quick()" placeholder="Paste Here">
+
+    </div>
+
+
+
+
+
+
+    <div id="" style="display:block; height: 35%; float: right;">
+        <p>Copy and Paste the PupilPath Table to the Right</p>
+        <img src="table.png">
+        
+        <p id="gradesHere" class="grades"></p>
+
+    </div>
+
+    <div id="edit" style="float: left; height: 8%; overflow-y: scroll">
+        <p onclick="avc()">Edit Weighted Classes (click)</p>
+        <table id="weights" style="display: none;">
+            <tr>
+                <th>Keyword</th>
+                <th>Weights</th>
+                <th>Credits</th>
+            </tr>
+
+            <tr>
+                <td><input type="text" id="0x" oninput="addRow()"></td>
+                <td><input type="text" id="0y" oninput="addRow()"></td>
+                <td><input type="text" id="0z" oninput="addRow()"></td>
+            </tr>
+
+            <tr>
+                <td><input type="text" id="1x" oninput="addRow()"></td>
+                <td><input type="text" id="1y" oninput="addRow()"></td>
+                <td><input type="text" id="1z" oninput="addRow()"></td>
+            </tr>
+
+            <tr>
+                <td><input type="text" id="2x" oninput="addRow()"></td>
+                <td><input type="text" id="2y" oninput="addRow()"></td>
+                <td><input type="text" id="2z" oninput="addRow()"></td>
+            </tr>
+
+            <tr>
+                <td><input type="text" id="3x" oninput="addRow()"></td>
+                <td><input type="text" id="3y" oninput="addRow()"></td>
+                <td><input type="text" id="3z" oninput="addRow()"></td>
+            </tr>
+
+            <tr>
+                <td><input type="text" id="4x" oninput="addRow()"></td>
+                <td><input type="text" id="4y" oninput="addRow()"></td>
+                <td><input type="text" id="4z" oninput="addRow()"></td>
+            </tr>
+
+            <tr>
+                <td><input type="text" id="5x" oninput="addRow()"></td>
+                <td><input type="text" id="5y" oninput="addRow()"></td>
+                <td><input type="text" id="5z" oninput="addRow()"></td>
+            </tr>
+
+            <tr>
+                <td><input type="text" id="6x" oninput="addRow()"></td>
+                <td><input type="text" id="6y" oninput="addRow()"></td>
+                <td><input type="text" id="6z" oninput="addRow()"></td>
+            </tr>
+
+            <tr>
+                <td><input type="text" id="7x" oninput="addRow()"></td>
+                <td><input type="text" id="7y" oninput="addRow()"></td>
+                <td><input type="text" id="7z" oninput="addRow()"></td>
+            </tr>
+
+            <tr>
+                <td><input type="text" id="8x" oninput="addRow()"></td>
+                <td><input type="text" id="8y" oninput="addRow()"></td>
+                <td><input type="text" id="8z" oninput="addRow()"></td>
+            </tr>
+
+            <tr>
+                <td><input type="text" id="9x" oninput="addRow()"></td>
+                <td><input type="text" id="9y" oninput="addRow()"></td>
+                <td><input type="text" id="9z" oninput="addRow()"></td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</body>
+
+</html>
