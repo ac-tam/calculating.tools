@@ -11,6 +11,17 @@ div {
 }
 
 
+footer {
+    font-family: Calibri;
+font-size: 15px;
+  width: 100%;
+  margin-top: 2%;
+  height: 20px;
+  background-color: gray;
+  color: white;
+  text-align: center;
+  float: left;
+}
 
 input {
     border: 0px solid white;
@@ -159,4 +170,8 @@ table input {
 ::-webkit-scrollbar {
 width: 0px;
 background: transparent;
+}
+a {
+
+    text-decoration: none;
 }
