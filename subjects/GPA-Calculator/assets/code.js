@@ -15,7 +15,7 @@
     function avc() {
 
         if (document.getElementById("edit").style.height == "300px") {
-            document.getElementById("edit").style.height = "77px";
+            document.getElementById("edit").style.height = "auto";
             document.getElementById("weights").style.display = "none    ";
         }
         else {
@@ -113,7 +113,7 @@
         }
 
 
-        document.getElementById("gradesHere").innerHTML  = `<p> <br><br> Weighted Sum: ${roundTo2(sum)} <br>
+        document.getElementById("gradesHere").innerHTML  = `<p>Weighted Sum: ${roundTo2(sum)} <br>
                                                             Credits: ${roundTo2(creditCount)} <br> <br>
                                                             Average: ${roundTo2(sum/creditCount)} <p> `
 

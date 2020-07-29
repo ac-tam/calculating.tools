@@ -31,10 +31,8 @@
 
 
 
-    <div style="float: left; height: 23%">
+    <div style="float: left;">
         <h1> <b>Weighted GPA Calculator</b> </h1>
-
-        
         <input autocomplete="off" id="direct" type="text" oninput="quick()" placeholder="Paste Here">
 
     </div>
@@ -44,15 +42,15 @@
 
 
 
-    <div id="gradesHere" style="display:block; height: 35%; float: right;">
+    <div id="gradesHere" style="display:block; float:right">
         <p>Copy and Paste the <a href = "https://pupilpath.skedula.com/home/dashboard/">PupilPath</a> Table to the Left</p>
-        <img src="table.png" style="width: 80%;">
+        <img src="table.png" style="width: 80%;height: 80%;">
         
         <p id="" class="grades"></p>
 
     </div>
 
-    <div id="edit" style="float: left; height: 8%; overflow-y: scroll">
+    <div id="edit" style="float: left; overflow-y: scroll">
         <p onclick="avc()">Edit Weighted Classes (click)</p>
         <table id="weights" style="display: none;">
             <tr>
