@@ -84,6 +84,8 @@
 
     function quick() {
         var str = document.getElementById("direct").value;
+         creditCount = 0;
+
         if (str.length > 0) {
             var gradeArray = [];
 
