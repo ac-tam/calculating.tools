@@ -34,6 +34,7 @@
         }
 
         writeCookie()
+        quick();
     }
 
     function writeCookie() {
@@ -110,7 +111,9 @@
         }
 
 
-        document.getElementById("gradesHere").innerHTML  = sum/creditCount + ""
+        document.getElementById("gradesHere").innerHTML  = `<p> <br><br> Weighted Sum: ${roundTo2(sum)} <br>
+                                                            Credits: ${roundTo2(creditCount)} <br> <br>
+                                                            Average: ${roundTo2(sum/creditCount)} <p> `
 
 
 
