@@ -1,11 +1,148 @@
 <!DOCTYPE html>
+<style>h1 {
+    color: black;
+    font-family: Calibri;
+    font-size: 30px;
+    padding: none;
+    margin: none;
+    text-align: center;
+}
 
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding-left: 10px;
+}
+
+header {
+    background-color: #474646;
+}
+
+nav {
+    float: right;
+}
+
+div {
+    width: 48%;
+    border-radius: 40px;
+    margin: 3%;
+    background: rgb(190, 214, 214);
+    color: black;
+    font-family: calibri;
+    text-align: center;
+    overflow-x: hidden;
+    
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+    margin: 10px;
+    padding-right: 0px;
+    padding-top: 5px;
+}
+
+header::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.logo {
+    color: white;
+    font-size: 45px;
+    font-family: Calibri;
+    text-decoration: none;
+    padding: 5px;
+}
+
+nav a {
+    color: white;
+    font-size: 20px;
+    font-family: Calibri;
+    text-decoration: none;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.rawdata {
+    overflow-y: auto;
+    height: 500px;
+    width: 266px;
+    float: left;
+}
+
+
+table {
+    height: fit-content;
+}
+
+tr {
+    width: 50%;
+    height: 50px;
+}
+td input {
+    width: 100%;
+    height: 50px;
+    border: none;
+    text-align: center;
+    background: none;
+}
+}
+td {
+    width: 50%;
+    height: 50px;
+    border: none;
+    text-align: center;
+    background: none;
+}
+
+th {
+    border-bottom: 1px black solid;
+    font-family: sans-serif;
+    font-size: 24px;
+    width: 50%;
+    height: 50px
+    ;
+}
+
+th:nth-child(odd), td:nth-child(odd) {
+    border-right: 1px black solid;
+}
+
+td {
+    border-bottom: 1px black dashed;
+}
+
+
+.ans {
+
+    display: block;
+    float: left
+}
+
+a {
+
+    text-decoration: none;
+}</style>
 <html>
 <meta charset="UTF-8">
 
 <head>
     <title>Linearization Calculator</title>
-    <link rel="stylesheet" href="https://calculating.tools/css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
 
@@ -29,7 +166,7 @@
     </header>
 
     <h1>Physics Linearization Calculator</h1>
-    <div class="rawdata">
+    <div class="rawdata" id = "rawtable">
         <table>
                 <tr>
                     <th>x</th>
@@ -88,6 +225,7 @@
             if ("" + rawY[rawY.length - 1] !== "NaN" || "" + rawX[rawX.length - 1] !== "NaN") {
                 var row = document.createElement("tr")
                 row.innerHTML = tableRow(rawX.length + "x") + tableRow(rawX.length + "y")
+                console.log(row)
                 document.getElementById("rawtable").appendChild(row)
 
                 rawX.push("")
