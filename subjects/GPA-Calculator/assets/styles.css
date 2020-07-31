@@ -4,15 +4,17 @@ div {
     margin: 1%;
     background: rgb(190, 214, 214);
     color: black;
-    font-family: calibri;
+    font-family: calibri, sans-serif;
     font-size: 50px;
     text-align: center;
+    box-shadow:  0 8px 8px 0 rgba(0,0,0,.1);
+    ;
 
 }
 
 
 footer {
-    font-family: Calibri;
+    font-family: calibri, sans-serif;
 font-size: 15px;
   width: 100%;
   margin-top: 2%;
@@ -34,18 +36,18 @@ input {
 }
 
 p {
-    font-family: calibri;
+    font-family: calibri, sans-serif;
     font-size: 24px;
 }
 
 pre {
     font-size: 20px;
-    font-family: calibri;
+    font-family: calibri, sans-serif;
 }
 
 h1 {
     font-size: 60px;
-    font-family: calibri;
+    font-family: calibri, sans-serif;
     color: #1d241e;
 }
 
@@ -76,7 +78,7 @@ img {
 
 h1 {
     color: black;
-    font-family: Calibri;
+    font-family: calibri, sans-serif;
     font-size: 30px;
     padding: none;
     margin: none;
@@ -122,7 +124,7 @@ header::after {
 .logo {
     color: white;
     font-size: 45px;
-    font-family: Calibri;
+    font-family: calibri, sans-serif;
     text-decoration: none;
     padding: 5px;
 }
@@ -130,7 +132,7 @@ header::after {
 nav a {
     color: white;
     font-size: 20px;
-    font-family: Calibri;
+    font-family: calibri, sans-serif;
     text-decoration: none;
 }
 
