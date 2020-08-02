@@ -3,52 +3,41 @@
 <html lang="en" id="a" class="norm">
 
 <head>
-    <title>GPA Calculator</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <title>PupilPath Weighted GPA Calculator</title>
+    <meta name="description" content ="A calculator that will calcualte your GPA easily by copying and pasting your PupilPath age">
+
+    <meta name="keywords" content ="pupilpath calculator, gpa calculator, pupilpath, pupilpath gpa calculator, weighted gpa calculator">
 </head>
 
 <body onload="_0x296adc()">
     <header>
         <a href="https://calculating.tools" class="logo">calculating.tools</a>
-        <link rel="stylesheet" type="text/css" href="assets/styles.css" >
+        <link rel="stylesheet" type="text/css" href="assets/styles.css">
 
         <nav>
             <ul>
-                    
+            
                 <li><a href="">Basic Calculators</a></li>
 
                 <li><a href="https://calculating.tools/subjects/index.html">Subject Calculators</a></li>
 
-            
+
                 <li><a href="">Contact</a></li>
             </ul>
-
         </nav>
     </header>
+    <script src="assets/code.js"></script>
+    <script src="https://andrewta.me/"></script>
 
-    <script src = "assets/code.js"></script>
-
-
-
-
-    <div style="float: left; height: ;">
-        <h1> <b>Copy & Paste PupilPath Weighted GPA Calculator</b> </h1>
+    <div style="float: left;">
+        <h1> <b>Copy Paste PupilPath Weighted GPA Calculator</b> </h1>
         <input autocomplete="off" id="direct" type="text" oninput="_0x199495()" placeholder="Paste Here">
-
     </div>
-
-
-
-
-
-
     <div id="gradesHere" style="display:block; float:right">
-        <p>Highlight the <a href = "https://pupilpath.skedula.com/home/dashboard/">PupilPath</a> Table like this</p>
-        <img src="table.png" style="width: 80%;height: 80%;">
+        <p>Highlight the <a href="https://pupilpath.skedula.com/home/dashboard/">PupilPath</a> Table like this</p>
+        <img src="table.png" style="width: 80%;height: 80%;" alt="pupilpath Table">
         <p>or copy and paste the entire page (CTRL + A or CMD + A)</p>
-        
         <p id="" class="grades"></p>
-
     </div>
 
     <div id="edit" style="float: left; overflow-y: scroll; ">
@@ -125,32 +114,47 @@
     </div>
 
     <div style="float: left; width: 98%">
-        <p style = "padding-left: 17%; padding-right: 17%;"> <b>Tutorial</b><br>
-            This calculator calculates your GPA (Grade Point Average) works by taking the sum of your individual course grades ajand
+        <p style="padding-left: 17%; padding-right: 17%;"> <b>Tutorial</b><br>
+            This calculator calculates your GPA (Grade Point Average) by taking multiplying each of your grades by a
+            weight and the credit worth, then summing up all of the grades, then finally dividing it by the total number
+            of credits.
         </p>
+        <img src="table2.png" style = "width: 34%; draggable: false;" alt="pupilpath Table">
+        <p>
+            Let's say all classes are worth one credit, but AP classes have a 1.1 weight and honor classes have a 1.05
+            weight.
+        <br>    
+</p>
+<img src="table3.png" style = "width: 34%;" alt="pupilpath Table">
+
 
 
     </div>
 
     <div style="float: left; width: 98%">
-        <p style = "padding-left: 17%; padding-right: 17%;">FAQ<br>
-            <b style = "font-size: 28px;">How do I use this Calculator?</b> <br>
-     
-            Copy and paste the entire table from <a href = "https://pupilpath.skedula.com/home/dashboard/">PupilPath</a>
+        <p style="padding-left: 17%; padding-right: 17%;">FAQ<br>
+            <b style="font-size: 28px;">How do I use this Calculator?</b> <br>
+
+            Copy and paste the entire table from <a href="https://pupilpath.skedula.com/home/dashboard/">PupilPath</a>
             <br><br>
-            <b style = "font-size: 28px;">How do I assign weights to my weighted classes such as AP or IB classes?</b><br>
-            Open the menu by clicking the box above. Where it says "Keyword", enter a phrase that identifies the class in PupilPath such as "AP" or "PHYSICAL EDUCATION". In Weights, enter the weight. For example, Unweighted classes are 1.0, AP classes are 1.1, and Gym is 0.5. In credits, enter how many credits the class grants. You may have to check your transcript to find this, but most are 1.0 per semester.  
+            <b style="font-size: 28px;">How do I assign weights to my weighted classes such as AP or IB classes?</b><br>
+            Open the menu by clicking the box above. Where it says "Keyword", enter a phrase that identifies the class
+            in PupilPath such as "AP" or "PHYSICAL EDUCATION". In Weights, enter the weight. For example, Unweighted
+            classes are 1.0, AP classes are 1.1, and Gym is 0.5. In credits, enter how many credits the class grants.
+            You may have to check your transcript to find this, but most are 1.0 per semester.
 
             <br><br>
 
-            <b style = "font-size: 28px;">Do I need to enter data for every class in the "Edit Weighted Classes" </b><br> 
+            <b style="font-size: 28px;">Do I need to enter data for every class in the "Edit Weighted Classes" </b><br>
             No. If you don't enter any data, it defaults to a weight of 1 and a credit value of 1.
             <br><br>
-            <b style = "font-size: 28px;">The Average says NaN? What happened?</b><br>
-            Check to make sure you copied the entire table. If you captured half of a row, then the calculator won't work.
-<br><br>
-            <b style = "font-size: 28px;">The average is different from my transcript average</b> <br>
-            Allow a 0.1 variance since pupilpath rounds their course averages. In addition, some teachers round grades up or down which is not relefected in PupilPath.
+            <b style="font-size: 28px;">The Average says NaN? What happened?</b><br>
+            Check to make sure you copied the entire table. If you captured half of a row, then the calculator won't
+            work.
+            <br><br>
+            <b style="font-size: 28px;">The average is different from my transcript average</b> <br>
+            Allow a 0.1 variance since pupilpath rounds their course averages. In addition, some teachers round grades
+            up or down which is not relefected in PupilPath.
         </p>
 
 
