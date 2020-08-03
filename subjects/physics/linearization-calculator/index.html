@@ -1,165 +1,215 @@
 <!DOCTYPE html>
-<style>h1 {
-    color: black;
-    font-family: Calibri;
-    font-size: 30px;
-    padding: none;
-    margin: none;
-    text-align: center;
-}
+<style>
+    h1 {
+        color: black;
+        font-family: Calibri;
+        font-size: 30px;
+        padding: none;
+        margin: none;
+        text-align: center;
+    }
 
-p {
-    font-size: 30px;;
-}
-ul {
-    list-style: none;
-    padding: 0;
-}
+    p {
+        font-size: 30px;
+        ;
+    }
 
-li {
-    padding-left: 10px;
-}
+    ul {
+        list-style: none;
+        padding: 0;
+    }
 
-header {
-    background-color: #474646;
-}
+    li {
+        padding-left: 10px;
+    }
 
-nav {
-    float: right;
-}
+    header {
+        background-color: #474646;
+    }
 
-div {
-    width: 20%;
-    margin-left: 20%;
-    border-radius: 40px;
-    background: rgb(190, 214, 214);
-    color: black;
-    font-family: calibri;
-    text-align: center;
-    overflow-x: hidden;
-    
-}
+    nav {
+        float: right;
+    }
 
-nav ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
+    div {
+        width: 20%;
+        margin-left: 20%;
+        border-radius: 40px;
+        background: rgb(190, 214, 214);
+        color: black;
+        font-family: calibri;
+        text-align: center;
+        overflow-x: hidden;
 
-nav li {
-    display: inline-block;
-    margin: 10px;
-    padding-right: 0px;
-    padding-top: 5px;
-}
+    }
 
-header::after {
-    content: '';
-    display: table;
-    clear: both;
-}
+    nav ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
 
-.logo {
-    color: white;
-    font-size: 45px;
-    font-family: Calibri;
-    text-decoration: none;
-    padding: 5px;
-}
-tbody {
-    width: 100%;
-}
+    nav li {
+        display: inline-block;
+        margin: 10px;
+        padding-right: 0px;
+        padding-top: 5px;
+    }
 
-nav a {
-    color: white;
-    font-size: 20px;
-    font-family: Calibri;
-    text-decoration: none;
-}
+    header::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
 
-html, body {
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
-}
+    .logo {
+        color: white;
+        font-size: 45px;
+        font-family: Calibri;
+        text-decoration: none;
+        padding: 5px;
+    }
 
-.rawdata {
-    overflow-y: auto;
-    height: 500px;
-    width: 20%;
-    float: left;
-}
+    tbody {
+        width: 100%;
+    }
 
+    nav a {
+        color: white;
+        font-size: 20px;
+        font-family: Calibri;
+        text-decoration: none;
+    }
 
-table {
-    width: 100%;
-    height: fit-content;
-}
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
 
-tr {
-    width: 100%;
-    height: 50px;
-}
-td input {
-    width: 100%;
-    height: 50px;
-    border: none;
-    text-align: center;
-    background: none;
-    border-collapse: separate;
-    border-spacing: 2px;
-
-}
-td {
-    width: 50%;
-    height: 50px;
-    border: none;
-    text-align: center;
-    background: none;
-}
-
-th {
-    border-bottom: 1px black solid;
-    font-family: sans-serif;
-    font-size: 24px;
-    width: 50%;
-    height: 50px
-    ;
-}
-
-th:nth-child(odd), td:nth-child(odd) {
-    border-right: 1px black solid;
-}
-
-td {
-    border-bottom: 1px black dashed;
-}
+    .rawdata {
+        overflow-y: auto;
+        height: 500px;
+        width: 20%;
+        float: left;
+    }
 
 
-.ans {
-    width: 35%;
-    display: block;
-    float: left;
-    margin-top: 50px;
-    margin-bottom: 50px;;
-    margin-left: 32.5%;
-}
+    table {
+        width: 100%;
+        height: fit-content;
+    }
 
-a {
+    tr {
+        width: 100%;
+        height: 50px;
+    }
 
-    text-decoration: none;
-}</style>
+    td input {
+        width: 100%;
+        height: 50px;
+        border: none;
+        text-align: center;
+        background: none;
+        border-collapse: separate;
+        border-spacing: 2px;
+
+    }
+
+    td {
+        width: 50%;
+        height: 50px;
+        border: none;
+        text-align: center;
+        background: none;
+    }
+
+    th {
+        border-bottom: 1px black solid;
+        font-family: sans-serif;
+        font-size: 24px;
+        width: 50%;
+        height: 50px;
+    }
+
+    th:nth-child(odd),
+    td:nth-child(odd) {
+        border-right: 1px black solid;
+    }
+
+    td {
+        border-bottom: 1px black dashed;
+    }
+
+
+    .ans {
+        width: 35%;
+        display: block;
+        float: left;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        ;
+        margin-left: 32.5%;
+        font-size: 24px;
+    }
+
+    a {
+
+        text-decoration: none;
+    }
+
+    .tutorial p {
+        padding-left: 25%;
+        padding-right: 25%;
+        font-size: 24px;
+
+    }
+
+    .hortable,
+    .hortable th,
+    .hortable td,
+    .hortable tr {
+        border: 1px black solid;
+        border-collapse: collapse;
+        padding: 0px;
+        ;
+        font-size: 20px;
+        ;
+        font-family: Calibri;
+        ;
+        padding-left: 10px;
+        padding-right: 10px;
+        height: auto;
+        font-weight: 400;
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+    tr td:nth-child(1) {
+        padding-right: 9px;
+        text-align: center;
+    }
+
+    tr th:nth-child(1) {
+        padding-left: 0px;
+
+        padding-right: 0px;
+
+        text-align: center;
+    }
+</style>
 <html>
 <meta charset="UTF-8">
 
 <head>
     <title>Linearization Calculator</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <script
-    src="https://code.jquery.com/jquery-3.5.1.js"
-    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
 
 
@@ -172,7 +222,7 @@ a {
 
         <nav>
             <ul>
-            
+
                 <li><a href="">Basic Calculators</a></li>
 
                 <li><a href="https://calculating.tools/subjects/index.html">Subject Calculators</a></li>
@@ -183,13 +233,13 @@ a {
         </nav>
     </header>
 
-    
+
 
 
     <h1>Physics Linearization Calculator</h1>
-    <div class="rawdata" >
+    <div class="rawdata">
         <table>
-            <tbody id = "rawtable">
+            <tbody id="rawtable">
                 <tr>
                     <th>x</th>
                     <th>y</th>
@@ -203,7 +253,7 @@ a {
         </table>
 
     </div>
-    <div class = 'rawdata' id="tab">
+    <div class='rawdata' id="tab">
         <table>
             <tbody>
                 <tr>
@@ -219,21 +269,197 @@ a {
 
     </div>
 
-    <div class="ans" id="ans" style="display: none;">
+    <div class="ans" id="ans">
 
     </div>
 
-    <div style="width: 95%; margin-left: 2.5%;">
+    <div style="width: 95%; margin-left: 2.5%;" class="tutorial">
         <p><b>How do I use this calculator?</b> <br>
-       
-        Enter your raw data in the table row by row. New Rows are automaticially added. 
+
+            Enter your raw data in the table row by row. New Rows are automaticially added.
+        </p>
+        <p><b>How do I linearize data without the calculator?</b> <br>
+            Let's use this example data below. Our first step is to determine the type and of graph (quadratic, inverse,
+            linear, etc.)
+        </p>
+        <table class="hortable">
+            <tr>
+                <th>X</th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>
+
+            </tr>
+
+            <tr>
+                <td>Y</td>
+                <td>2</td>
+                <td>3</td>
+                <td>10</td>
+                <td>18</td>
+                <td>24</td>
+                <td>37</td>
+                <td>54</td>
+                <td>70</td>
+                <td>82</td>
+
+            </tr>
+        </table>
+
+        <p> Usually, it is hard to determine the shape of your graph from the table. Graph a scattergraph on a graphing
+            calculator or on graphing paper.
+
+
+
         </p>
 
-        <p><b>How do I linearize data without the calculator?</b> <br>
-       
-            First, determine what kind of graph you have.
-            </p>
-            <img src = "quadratic.png"> <img src = "inverse.png"><img src = "linear.png">
+        <img src='graph.png' alt = "graph of data">
+
+
+        <p> Notice how the slope between points becomes more steep as you go right. The graph looks like a quadratic
+            equation.
+
+            In order to know what to do to lineraize the data, let's look at the equation y = x<sup>2</sup> </p>
+        <p style="margin-bottom: 10px;">y = x<sup>2</sup><br></p>
+
+        <table class="hortable">
+            <tr>
+                <th>X</th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>
+
+            </tr>
+
+            <tr>
+                <td>Y</td>
+                <td>1</td>
+                <td>4</td>
+                <td>9</td>
+                <td>16</td>
+                <td>25</td>
+                <td>36</td>
+                <td>49</td>
+                <td>64</td>
+                <td>81</td>
+
+            </tr>
+        </table>
+
+
+        <p>The equation says that every y value is the x value squared. Thus, if we square all of the x values, then
+            each x value is equal to the y value.
+        </p><br>
+
+        <table class="hortable">
+            <tr>
+                <th>X</th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>
+
+            </tr>
+
+            <tr>
+                <td>X<sup>2</sup></td>
+                <td>1</td>
+                <td>4</td>
+                <td>9</td>
+                <td>16</td>
+                <td>25</td>
+                <td>36</td>
+                <td>49</td>
+                <td>64</td>
+                <td>81</td>
+
+            </tr>
+            <tr>
+                <td>Y</td>
+                <td>1</td>
+                <td>4</td>
+                <td>9</td>
+                <td>16</td>
+                <td>25</td>
+                <td>36</td>
+                <td>49</td>
+                <td>64</td>
+                <td>81</td>
+
+            </tr>
+        </table>
+
+
+
+        <p style="padding-bottom: 2px;">If we were to graph y vs x<sup>2</sup>, it would be linear with a slope of 1.
+            <br>
+            We can use this idea with our example data. Since it looks quadratic, each y value is the x value squared.
+            Thus, if we square each x or square root each y, we will get a linear graph
+        </p>
+
+        <table class="hortable">
+            <tr>
+                <th>X</th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>
+
+            </tr>
+            <tr>
+
+            <tr>
+                <td>X<sup>2</sup></td>
+                <td>1</td>
+                <td>4</td>
+                <td>9</td>
+                <td>16</td>
+                <td>25</td>
+                <td>36</td>
+                <td>49</td>
+                <td>64</td>
+                <td>81</td>
+
+            </tr>
+
+            <tr>
+                <td>Y</td>
+                <td>2</td>
+                <td>3</td>
+                <td>10</td>
+                <td>18</td>
+                <td>24</td>
+                <td>37</td>
+                <td>54</td>
+                <td>70</td>
+                <td>82</td>
+
+            </tr>
+
+        </table>
+        <img src = "graph2.png" alt = "linearized graph">
     </div>
 
 
@@ -344,17 +570,16 @@ a {
     var ans = ""
 
     function linearizeData(x, y) {
-        document.getElementById("ans").style.display = "block"
 
 
         if (x.length != y.length)
             return null
         if (x.length == 1) {
-            document.getElementById("ans").innerHTML = "Not enough data"
+            document.getElementById("ans").innerHTML = "Not enough data <br> Enter at least 3 data points"
             return null
         }
         if (x.length == 2) {
-            document.getElementById("ans").innerHTML = "Linear <br> r = 1"
+            document.getElementById("ans").innerHTML = "2 points is always linear <br> r = 1"
             return null
         }
 
@@ -405,7 +630,7 @@ a {
         document.getElementById('tab').scrollTo(0, document.getElementById('tab').clientHeight)
         document.getElementById("ans").innerHTML = mostLinear + " <br> r = " + maxR;
 
-        
+
     }
 
     function makeTable(x, y, xHeader, yHeader) {
@@ -431,5 +656,5 @@ a {
         return Math.round(num * 100) / 100
     }
 
-    
+
 </script>
