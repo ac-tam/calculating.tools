@@ -35,7 +35,7 @@ input {
     width: inherit;
 }
 
-p {
+p, h2 {
     font-family: calibri, sans-serif;
     font-size: 24px;
 }
@@ -172,8 +172,4 @@ table input {
 ::-webkit-scrollbar {
 width: 0px;
 background: transparent;
-}
-a {
-
-    text-decoration: none;
 }

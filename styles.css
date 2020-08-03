@@ -8,7 +8,6 @@ h1 {
 }
 
 ul {
-    list-style: none;
     padding: 0;
 }
 
@@ -27,11 +26,12 @@ nav {
 div {
     width: 48%;
     border-radius: 40px;
-    margin: 3%;
     background: rgb(190, 214, 214);
     color: black;
     font-family: calibri;
     text-align: center;
+    box-shadow:  0 8px 8px 0 rgba(0,0,0,.1);
+
     
 }
 
@@ -128,4 +128,29 @@ td {
 a {
 
     text-decoration: none;
+}
+
+.infobox {
+    width: 17.5%;
+    margin: 3%;
+    margin-top: 5%;
+    float: left;
+    
+
+}
+
+.infobox a {
+    font-size: 25px;;
+    
+}
+.infobox p{
+    font-size: 36px;;
+    padding: none;
+    
+}
+.infobox ul {
+    list-style:   none;
+
+
+
 }

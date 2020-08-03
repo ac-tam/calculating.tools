@@ -8,6 +8,9 @@
     text-align: center;
 }
 
+p {
+    font-size: 30px;;
+}
 ul {
     list-style: none;
     padding: 0;
@@ -26,9 +29,9 @@ nav {
 }
 
 div {
-    width: 48%;
+    width: 20%;
+    margin-left: 20%;
     border-radius: 40px;
-    margin: 3%;
     background: rgb(190, 214, 214);
     color: black;
     font-family: calibri;
@@ -63,6 +66,9 @@ header::after {
     text-decoration: none;
     padding: 5px;
 }
+tbody {
+    width: 100%;
+}
 
 nav a {
     color: white;
@@ -81,17 +87,18 @@ html, body {
 .rawdata {
     overflow-y: auto;
     height: 500px;
-    width: 266px;
+    width: 20%;
     float: left;
 }
 
 
 table {
+    width: 100%;
     height: fit-content;
 }
 
 tr {
-    width: 50%;
+    width: 100%;
     height: 50px;
 }
 td input {
@@ -100,7 +107,9 @@ td input {
     border: none;
     text-align: center;
     background: none;
-}
+    border-collapse: separate;
+    border-spacing: 2px;
+
 }
 td {
     width: 50%;
@@ -129,9 +138,12 @@ td {
 
 
 .ans {
-
+    width: 35%;
     display: block;
-    float: left
+    float: left;
+    margin-top: 50px;
+    margin-bottom: 50px;;
+    margin-left: 32.5%;
 }
 
 a {
@@ -144,30 +156,40 @@ a {
 <head>
     <title>Linearization Calculator</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+
 
 
 </head>
 
 <body>
     <header>
-        <a href="https://calculating.tools/index.html" class="logo">calculating.tools</a>
+        <a href="https://calculating.tools" class="logo">calculating.tools</a>
+        <link rel="stylesheet" type="text/css" href="styles.css">
 
         <nav>
             <ul>
-
+            
                 <li><a href="">Basic Calculators</a></li>
 
                 <li><a href="https://calculating.tools/subjects/index.html">Subject Calculators</a></li>
 
+
                 <li><a href="">Contact</a></li>
             </ul>
-
         </nav>
     </header>
 
+    
+
+
     <h1>Physics Linearization Calculator</h1>
-    <div class="rawdata" id = "rawtable">
+    <div class="rawdata" >
         <table>
+            <tbody id = "rawtable">
                 <tr>
                     <th>x</th>
                     <th>y</th>
@@ -177,26 +199,41 @@ a {
                     <td><input type="text" id="0x" oninput="addData()"> </td>
                     <td><input type="text" id="0y" oninput="addData()"> </td>
                 </tr>
-
-
+            </tbody>
         </table>
 
     </div>
     <div class = 'rawdata' id="tab">
         <table>
+            <tbody>
                 <tr>
                     <th>x</th>
                     <th>y</th>
                 </tr>
-
             </tbody>
-
-
         </table>
+        <p>
+            Linearizaed Data will Appear Here
+
+        </p>
 
     </div>
 
-    <div class="ans" id="ans">
+    <div class="ans" id="ans" style="display: none;">
+
+    </div>
+
+    <div style="width: 95%; margin-left: 2.5%;">
+        <p><b>How do I use this calculator?</b> <br>
+       
+        Enter your raw data in the table row by row. New Rows are automaticially added. 
+        </p>
+
+        <p><b>How do I linearize data without the calculator?</b> <br>
+       
+            First, determine what kind of graph you have.
+            </p>
+            <img src = "quadratic.png"> <img src = "inverse.png"><img src = "linear.png">
     </div>
 
 
@@ -307,6 +344,9 @@ a {
     var ans = ""
 
     function linearizeData(x, y) {
+        document.getElementById("ans").style.display = "block"
+
+
         if (x.length != y.length)
             return null
         if (x.length == 1) {
@@ -314,7 +354,7 @@ a {
             return null
         }
         if (x.length == 2) {
-            document.getElementById("ans").innerHTML = "Linear"
+            document.getElementById("ans").innerHTML = "Linear <br> r = 1"
             return null
         }
 
@@ -363,7 +403,7 @@ a {
 
         }
         document.getElementById('tab').scrollTo(0, document.getElementById('tab').clientHeight)
-        document.getElementById("ans").innerHTML = mostLinear + " <br> r =" + maxR;
+        document.getElementById("ans").innerHTML = mostLinear + " <br> r = " + maxR;
 
         
     }
