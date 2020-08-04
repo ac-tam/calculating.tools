@@ -202,14 +202,14 @@
         text-align: center;
     }
 </style>
-<html lang="en"> 
+<html lang="en">
 <meta charset="UTF-8">
 
 <head>
     <title>Physics Linearization Calculator</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <meta type = "description" content = "This Calculator can linear raw physics data">
-
+    <meta type="description"
+        content="This calculator will linearize raw physics data to aid you in deriving basic physics equations. You can also pratice linearization by generating random data.">
 
 
 </head>
@@ -217,20 +217,11 @@
 <body>
     <header>
         <a href="https://calculating.tools" class="logo">calculating.tools</a>
-        <link rel="stylesheet" type="text/css" href="styles.css">
-
-        <nav>
-            <ul>
-
-                <li><a href="">Basic Calculators</a></li>
-
-                <li><a href="https://calculating.tools/subjects/index.html">Subject Calculators</a></li>
-
-
                 <li><a href="">Contact</a></li>
             </ul>
         </nav>
     </header>
+
 
 
 
@@ -272,10 +263,23 @@
 
     </div>
 
+
+
+    <div id ='pra' style="width: 95%; margin-left: 2.5%; margin-bottom: 100px; padding-bottom: 50px;">
+        <p>
+            <b>Practice Linearization</b> <br>
+            <button onclick="randomProblem()">Generate random data</button>
+        </p>
+
+        <p id = "practice"></p>
+    </div>
+
+
+
     <div style="width: 95%; margin-left: 2.5%;" class="tutorial">
         <p><b>How do I use this Physics Linearization calculator?</b> <br>
 
-    Enter your data into the table, row by row. New rows are automaticially added.
+            Enter your data into the table, row by row. New rows are automaticially added.
         </p>
         <p><b>How do I linearize physics data?</b> <br>
             Let's use this example data below. Our first step is to determine the type and of graph (quadratic, inverse,
@@ -318,7 +322,7 @@
 
         </p>
 
-        <img src='graph.png' alt = "graph of data">
+        <img src='graph.png' alt="graph of data">
 
 
         <p> Notice how the slope between points becomes more steep as you go right. The graph looks like a quadratic
@@ -458,7 +462,7 @@
             </tr>
 
         </table>
-        <img src = "graph2.png" alt = "linearized graph">
+        <img src="graph2.png" alt="linearized graph">
     </div>
 
 
@@ -655,5 +659,84 @@
         return Math.round(num * 100) / 100
     }
 
+    function randomProblem() {
+        try {
+        document.getElementById("exdata").remove()
+        } catch (TypeError) {;}
+        var i = Math.floor(Math.random() * 2)
+        console.log(i)
+        var arr = [
+            "A phsyics student drops a ball from a height above the ground. They record both the height and airtime in the table below. Write an equation relating the two variables with a constant slope Z.",
+            "A physics student releases a pendulmn from a constant angle. They vary the length of the string and record the length of the string and the period of one swing. Derive an equation relating the length of the string and the period with a constant slope"
+        ];
+        var data = [
+            [   
+                [
+                    round(0.45 + Math.random()/7), 
+                    round(0.64 + Math.random()/7), 
+                    round(0.78 + Math.random()/7), 
+                    round(0.90 + Math.random()/7), 
+                    round(1.01 + Math.random()/7),
+                    round(1.11 + Math.random()/7), 
+                    round(1.2 + Math.random()/7), 
+                    round(1.28 + Math.random()/7)
+                ],
+                [1,2,3,4,5,6,7,8]
+            ],
+            
 
+            [ [1,2,3,4,5,6,7,8],
+            [
+                round(2 + Math.random()/7), 
+                round(2.84 + Math.random()/7), 
+                round(3.45 + Math.random()/7), 
+                round(4.01 + Math.random()/7), 
+                round(4.49 + Math.random()/7),
+                round(4.91 + Math.random()/7), 
+                round(5.31 + Math.random()/7), 
+                round(5.67 + Math.random()/7)
+            ]
+    ]
+            
+
+            
+        ];
+        var xUnit = ["Height (m)", "Length (m)"]
+        var yUnit = ["Time (s)", "Period (s)"]
+    document.getElementById("practice").innerHTML= arr[i] 
+
+    var table = document.createElement("table")
+    table.className = "hortable"
+
+    var rowX = document.createElement("tr")
+    var rowY = document.createElement("tr")
+
+    var td = document.createElement("td")
+
+    td.innerHTML = xUnit[i]
+    rowX.appendChild(td)
+    td = document.createElement("td")
+
+    
+    td.innerHTML = yUnit[i]
+    rowY.appendChild(td)
+
+    
+    for (var j = 0; j < 8; j++) {
+        td = document.createElement("td")
+        td.innerHTML = data[i][0][j]  + ""
+        rowX.appendChild(td)
+
+        td = document.createElement("td")
+        td.innerHTML = data[i][1][j]  + ""
+        rowY.appendChild(td)
+    }
+        table.appendChild(rowX)
+        table.appendChild(rowY)
+        table.id = "exdata"
+        document.getElementById("pra").appendChild(table)
+
+
+    }
+    
 </script>
