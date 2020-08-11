@@ -7,6 +7,7 @@
         padding: none;
         margin: none;
         text-align: center;
+
     }
 
     p {
@@ -40,6 +41,7 @@
         font-family: calibri;
         text-align: center;
         overflow-x: hidden;
+        box-shadow: 0 8px 8px 0 rgba(0, 0, 0, .1);
 
     }
 
@@ -68,6 +70,7 @@
         font-family: Calibri;
         text-decoration: none;
         padding: 5px;
+
     }
 
     tbody {
@@ -111,6 +114,8 @@
         width: 100%;
         height: 50px;
         border: none;
+        font-size: 24px;
+        font-family: Calibri, sans-serif;
         text-align: center;
         background: none;
         border-collapse: separate;
@@ -155,10 +160,6 @@
         font-size: 24px;
     }
 
-    a {
-
-        text-decoration: none;
-    }
 
     .tutorial p {
         padding-left: 25%;
@@ -216,7 +217,10 @@
 
 <body>
     <header>
+
         <a href="https://calculating.tools" class="logo">calculating.tools</a>
+        <nav>
+            <ul>
                 <li><a href="">Contact</a></li>
             </ul>
         </nav>
@@ -263,23 +267,26 @@
 
     </div>
 
-
-
-    <div id ='pra' style="width: 95%; margin-left: 2.5%; margin-bottom: 100px; padding-bottom: 50px;">
+    <div id='pra' style="width: 95%; margin-left: 2.5%; margin-bottom: 50px; padding-bottom: 20px;">
         <p>
             <b>Practice Linearization</b> <br>
             <button onclick="randomProblem()">Generate random data</button>
         </p>
 
-        <p id = "practice"></p>
+        <p id="practice"></p>
     </div>
 
 
 
     <div style="width: 95%; margin-left: 2.5%;" class="tutorial">
-        <p><b>How do I use this Physics Linearization calculator?</b> <br>
-
-            Enter your data into the table, row by row. New rows are automaticially added.
+        <p><b>Physics Linearization Calculator</b> <br>
+            This Physics Linearization Calculator can linearize raw data from physics experiments. The Linearization
+            Calculator uses the correlation coefficient r to determine how linear the linearized graph is. The higher
+            the r value is, the more linear it is. Note that the accuracy of this calculator can not be guaranteed with
+            small data sets. The more data you provide, the more accurate the result. The Linearization Calculator can
+            linearize inverse, quadratic, and square root data sets. If you try to enter other types of data such as
+            logarithmic, the calculator will not work. Some data may need to be linearized two times. For example, an
+            equation that is inverse squared needs to be both inversed and squared
         </p>
         <p><b>How do I linearize physics data?</b> <br>
             Let's use this example data below. Our first step is to determine the type and of graph (quadratic, inverse,
@@ -322,14 +329,16 @@
 
         </p>
 
+        <img src='types.png' alt="graph of data">
+
         <img src='graph.png' alt="graph of data">
 
 
-        <p> Notice how the slope between points becomes more steep as you go right. The graph looks like a quadratic
+        <p style="margin-bottom: 2px;"> Notice how the slope between points becomes more steep as you go right. The
+            graph looks like a quadratic
             equation.
 
             In order to know what to do to linearize the data, let's look at the equation y = x<sup>2</sup> </p>
-        <p style="margin-bottom: 10px;">y = x<sup>2</sup><br></p>
 
         <table class="hortable">
             <tr>
@@ -364,7 +373,7 @@
 
         <p>The equation says that every y value is the x value squared. Thus, if we square all of the x values, then
             each x value is equal to the y value.
-        </p><br>
+        </p>
 
         <table class="hortable">
             <tr>
@@ -460,10 +469,60 @@
                 <td>82</td>
 
             </tr>
-
         </table>
+
         <img src="graph2.png" alt="linearized graph">
+
+        <p> We can also linearize this data by square rooting all of the Y values</p>
+
+        <table class="hortable" style=" ">
+            <tr>
+                <th>X</th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>
+
+            </tr>
+            <tr>
+            <tr>
+                <td>Y</td>
+                <td>2</td>
+                <td>3</td>
+                <td>10</td>
+                <td>18</td>
+                <td>24</td>
+                <td>37</td>
+                <td>54</td>
+                <td>70</td>
+                <td>82</td>
+
+            </tr>
+            <tr>
+                <td>&radic;<span style="text-decoration:overline">Y</span></td>
+                <td>1.4</td>
+                <td>1.7</td>
+                <td>13.1</td>
+                <td>4.2</td>
+                <td>4.9</td>
+                <td>6.1</td>
+                <td>7.5</td>
+                <td>8.3</td>
+                <td>9.1</td>
+
+            </tr>
+        </table>
+        <img src="graph3.png" alt="linearized graph">
+
+
+
     </div>
+
 
 
 </html>
@@ -661,8 +720,8 @@
 
     function randomProblem() {
         try {
-        document.getElementById("exdata").remove()
-        } catch (TypeError) {;}
+            document.getElementById("exdata").remove()
+        } catch (TypeError) { ; }
         var i = Math.floor(Math.random() * 2)
         console.log(i)
         var arr = [
@@ -670,67 +729,67 @@
             "A physics student releases a pendulmn from a constant angle. They vary the length of the string and record the length of the string and the period of one swing. Derive an equation relating the length of the string and the period with a constant slope"
         ];
         var data = [
-            [   
-                [
-                    round(0.45 + Math.random()/7), 
-                    round(0.64 + Math.random()/7), 
-                    round(0.78 + Math.random()/7), 
-                    round(0.90 + Math.random()/7), 
-                    round(1.01 + Math.random()/7),
-                    round(1.11 + Math.random()/7), 
-                    round(1.2 + Math.random()/7), 
-                    round(1.28 + Math.random()/7)
-                ],
-                [1,2,3,4,5,6,7,8]
-            ],
-            
-
-            [ [1,2,3,4,5,6,7,8],
             [
-                round(2 + Math.random()/7), 
-                round(2.84 + Math.random()/7), 
-                round(3.45 + Math.random()/7), 
-                round(4.01 + Math.random()/7), 
-                round(4.49 + Math.random()/7),
-                round(4.91 + Math.random()/7), 
-                round(5.31 + Math.random()/7), 
-                round(5.67 + Math.random()/7)
-            ]
-    ]
-            
+                [
+                    round(0.45 + Math.random() / 7),
+                    round(0.64 + Math.random() / 7),
+                    round(0.78 + Math.random() / 7),
+                    round(0.90 + Math.random() / 7),
+                    round(1.01 + Math.random() / 7),
+                    round(1.11 + Math.random() / 7),
+                    round(1.2 + Math.random() / 7),
+                    round(1.28 + Math.random() / 7)
+                ],
+                [1, 2, 3, 4, 5, 6, 7, 8]
+            ],
 
-            
+
+            [[1, 2, 3, 4, 5, 6, 7, 8],
+            [
+                round(2 + Math.random() / 7),
+                round(2.84 + Math.random() / 7),
+                round(3.45 + Math.random() / 7),
+                round(4.01 + Math.random() / 7),
+                round(4.49 + Math.random() / 7),
+                round(4.91 + Math.random() / 7),
+                round(5.31 + Math.random() / 7),
+                round(5.67 + Math.random() / 7)
+            ]
+            ]
+
+
+
         ];
         var xUnit = ["Height (m)", "Length (m)"]
         var yUnit = ["Time (s)", "Period (s)"]
-    document.getElementById("practice").innerHTML= arr[i] 
+        document.getElementById("practice").innerHTML = arr[i]
 
-    var table = document.createElement("table")
-    table.className = "hortable"
+        var table = document.createElement("table")
+        table.className = "hortable"
 
-    var rowX = document.createElement("tr")
-    var rowY = document.createElement("tr")
+        var rowX = document.createElement("tr")
+        var rowY = document.createElement("tr")
 
-    var td = document.createElement("td")
+        var td = document.createElement("td")
 
-    td.innerHTML = xUnit[i]
-    rowX.appendChild(td)
-    td = document.createElement("td")
-
-    
-    td.innerHTML = yUnit[i]
-    rowY.appendChild(td)
-
-    
-    for (var j = 0; j < 8; j++) {
-        td = document.createElement("td")
-        td.innerHTML = data[i][0][j]  + ""
+        td.innerHTML = xUnit[i]
         rowX.appendChild(td)
-
         td = document.createElement("td")
-        td.innerHTML = data[i][1][j]  + ""
+
+
+        td.innerHTML = yUnit[i]
         rowY.appendChild(td)
-    }
+
+
+        for (var j = 0; j < 8; j++) {
+            td = document.createElement("td")
+            td.innerHTML = data[i][0][j] + ""
+            rowX.appendChild(td)
+
+            td = document.createElement("td")
+            td.innerHTML = data[i][1][j] + ""
+            rowY.appendChild(td)
+        }
         table.appendChild(rowX)
         table.appendChild(rowY)
         table.id = "exdata"
@@ -738,5 +797,5 @@
 
 
     }
-    
+
 </script>
