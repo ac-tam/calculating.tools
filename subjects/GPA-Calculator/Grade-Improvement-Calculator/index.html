@@ -1,0 +1,245 @@
+<body>
+
+    <body>
+
+
+        <header>
+            <a href="https://calculating.tools/index.html" class="logo">calculating.tools</a>
+            <nav>
+                <ul>
+                </ul>
+
+            </nav>
+        </header>
+
+
+        <div style="float: left">
+
+            <table id="grades">
+                <tr>
+                    <th>Category Weight</th>
+                    <th>Category Average</th>
+                    <th>Number of Assignments</th>
+                </tr>
+                <tr>
+                    <td><input type="text" id="weight0" oninput="go()" placeholder="0.5"></td>
+                    <td><input type="text" id="avg0" oninput="go()" placeholder="75"></td>
+                    <td> <input type="text" id="courses" oninput="go()" placeholder="3"></td>
+                </tr>
+            </table>
+            <table style="margin-left: auto; margin-right: auto; margin-top: 25px;">
+                <tr>
+                    <th>Current Average</th>
+                    <th>Desired Average</th>
+                </tr>
+                <tr>
+                    <td><input type="text" id="average" oninput="go()" placeholder="85"></td>
+                    <td> <input type="text" id="desired" oninput="go()" placeholder="90"></td>
+                </tr>
+            </table>
+            
+        </div>
+
+        <div id="g" style="float: right">
+        
+            <table>
+                <tr>
+                    <th>Number of Tests</th>
+                    <th>Average Test Score</th>
+                    <th>Sum of Test Scores</th>
+                </tr>
+
+                <tr>
+                    <td>Enter data</td>
+                    <td>to see</td>
+                    <td>results</td>
+                </tr>
+            </table>
+
+        </div>
+
+
+        <div style="width: 95%; margin-left: 2.5%;" class="tutorial">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente ut expedita asperiores earum enim officiis iusto dicta, magni quo quod quis cupiditate labore ducimus numquam voluptates at? Corporis ea quia, suscipit delectus quod nobis eaque. Sunt qui beatae unde cupiditate quo inventore, voluptates nam, dolor quibusdam voluptatem accusantium nulla, excepturi alias odit officia. Aliquam officiis consequatur corrupti deserunt ad sequi recusandae sunt numquam, odio magnam expedita. Dicta, voluptatem repudiandae veniam eius repellat animi autem illo accusamus inventore dolores corporis explicabo nulla necessitatibus? Quas eos ullam fugit voluptates esse. Non quo nesciunt quasi aspernatur maiores assumenda, mollitia dolorem dignissimos recusandae sed!
+        </div>
+
+
+
+        <script>
+            var max = 1;
+
+            function addRow() {
+                max++;
+                var tableRow = document.createElement("tr")
+                tableRow.innerHTML = `
+            <td><input type="text" id="weight${max}" placeholder="Category Weight"></td>
+            <td><input type="text" id="avg${max}" placeholder="Category Average"></td>
+            <td>Only required for Test Category (1st Row)</td>`
+
+
+                document.getElementById("grades").appendChild(tableRow)
+            }
+
+            function go() {
+                document.getElementById("g").innerHTML = ""
+                var length = 2;
+                var sum = 0;
+                var currentCourseAverage = parseFloat(document.getElementById("avg0").value)
+                var courseAverage = parseFloat(document.getElementById("weight0").value) * parseFloat(document
+                    .getElementById("avg0").value) // * 
+                var numCourses = parseFloat(document.getElementById("courses").value)
+
+
+                sum = parseFloat(document.getElementById("average").value) - courseAverage
+                var newTest = (parseFloat(document.getElementById("desired").value) - sum) * 1 / parseFloat(document
+                    .getElementById("weight0").value)
+
+
+                var pts = []
+                var count = []
+                var avg = []
+                for (var x = 1; x < 7; x++) {
+                    var y = newTest * numCourses - currentCourseAverage * numCourses + newTest * x
+                    if (Math.abs(y) <= 100 * x) {
+                        pts.push(round(y))
+                        count.push(x)
+                        avg.push(round(y / x))
+
+                    }
+                }
+                document.getElementById('g').innerHTML = makeTable(pts, count, avg)
+            }
+
+
+
+            function makeTable(x, y, z) {
+                if (x.length == 0)
+                    return " <table><tr> <th>Number of Tests</th><th>Average Test Score</th><th>Sum of Test Scores</th> </tr> <tr>    <td>ERROR</td> <td>Enter More Data</td> <td>or Desired Grade Impossible</td></tr>       </table>"
+                var table = `<table>
+            <tr>
+                <th>Number of Tests</th>
+                <th>Average Test Score</th>
+                <th>Sum of Test Scores</th>
+
+            </tr>`
+                for (var i = 0; i < x.length; i++)
+                    table += `
+                <tr>
+                    <td>${(y[i])}</td>
+                    <td>${(z[i])}</td>
+                    <td>${(x[i])}</td>
+                </tr>
+            `
+
+                return table + "</table>"
+
+
+            }
+
+            function round(num) {
+                return Math.round(num * 100) / 100
+            }
+        </script>
+
+
+
+    </body>
+
+    <style>
+        
+        div {
+            margin-left: 100px;
+            margin-right: 100px;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            padding-left: 5px;
+            padding-right: 5px;
+
+            width: auto;
+            border-radius: 40px;
+            background: rgb(190, 214, 214);
+            color: black;
+            font-family: calibri;
+            text-align: center;
+            box-shadow:  0 8px 8px 0 rgba(0,0,0,.1);
+
+            
+        }
+            
+        table,
+        th,
+        td,
+        tr {
+            border: 1px solid black;
+            border-collapse: collapse;
+            background: none;
+        }
+        
+
+        td {
+            width: 200px;
+            height: 50px;
+            text-align: center;
+            background: none;
+        }
+
+        table input,
+        a {
+            width: 100%;
+            height: 100%;
+            border: none;
+            font-size: 20px;
+            background: none;
+
+        }
+
+        table {
+            font-size: 20px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 45px;
+            font-family: Calibri;
+            text-decoration: none;
+            padding: 5px;
+
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .tutorial {
+            float: left;
+            margin-top: 100px;
+        }
+        header {
+            background-color: #474646;
+            margin-bottom: 20px;
+        }
+
+
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        nav li {
+            display: inline-block;
+            margin: 10px;
+            padding-right: 0px;
+            padding-top: 5px;
+        }
+
+        header::after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+    </style>
