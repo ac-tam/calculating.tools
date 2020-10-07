@@ -10,6 +10,18 @@
 
     }
 
+    footer {
+        font-family: calibri, sans-serif;
+        font-size: 15px;
+        width: 100%;
+        margin-top: 2%;
+        height: 20px;
+        background-color: gray;
+        color: white;
+        text-align: center;
+        float: left;
+    }
+
     p {
         font-size: 30px;
         ;
@@ -211,15 +223,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <meta type="description"
         content="This calculator will linearize raw physics data to aid you in deriving basic physics equations. You can also pratice linearization by generating random data.">
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-175159059-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-175159059-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-175159059-1');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-175159059-1');
+    </script>
 
 
 </head>
@@ -533,6 +548,11 @@
     </div>
 
 
+    <footer>
+        Copyright &#169; 2020 Andrew Tam. All Rights Reserved
+    </footer>
+
+
 
 </html>
 
@@ -583,12 +603,14 @@
             newArr.push(arr[i] * arr[i])
         return newArr
     }
+
     function sqrtAll(arr) {
         var newArr = []
         for (var i = 0; i < arr.length; i++)
             newArr.push(Math.sqrt(arr[i]))
         return newArr
     }
+
     function inverseAll(arr) {
         var newArr = []
         for (var i = 0; i < arr.length; i++)
@@ -604,6 +626,7 @@
         return newArr
 
     }
+
     function avg(x) {
         var sum = 0;
         for (var i = 0; i < x.length; i++)
@@ -611,6 +634,7 @@
         return sum / x.length
 
     }
+
     function standardDev(x) {
         var mean = avg(x);
         var standDev = 0
@@ -618,6 +642,7 @@
             standDev += Math.pow(x[i] - mean, 2)
         return Math.sqrt(standDev)
     }
+
     function r(x, y) {
 
         var r = 1 / (standardDev(x) * (standardDev(y)))
@@ -628,6 +653,7 @@
             sum += (x[i] - meanx) * (y[i] - meany)
         return r * sum
     }
+
     function linearize() {
         var x = document.getElementById("x").value.split(",")
         var y = document.getElementById("y").value.split(",")
@@ -723,6 +749,7 @@
 
 
     }
+
     function round(num) {
         return Math.round(num * 100) / 100
     }
@@ -730,7 +757,9 @@
     function randomProblem() {
         try {
             document.getElementById("exdata").remove()
-        } catch (TypeError) { ; }
+        } catch (TypeError) {
+            ;
+        }
         var i = Math.floor(Math.random() * 2)
         console.log(i)
         var arr = [
@@ -753,17 +782,18 @@
             ],
 
 
-            [[1, 2, 3, 4, 5, 6, 7, 8],
             [
-                round(2 + Math.random() / 7),
-                round(2.84 + Math.random() / 7),
-                round(3.45 + Math.random() / 7),
-                round(4.01 + Math.random() / 7),
-                round(4.49 + Math.random() / 7),
-                round(4.91 + Math.random() / 7),
-                round(5.31 + Math.random() / 7),
-                round(5.67 + Math.random() / 7)
-            ]
+                [1, 2, 3, 4, 5, 6, 7, 8],
+                [
+                    round(2 + Math.random() / 7),
+                    round(2.84 + Math.random() / 7),
+                    round(3.45 + Math.random() / 7),
+                    round(4.01 + Math.random() / 7),
+                    round(4.49 + Math.random() / 7),
+                    round(4.91 + Math.random() / 7),
+                    round(5.31 + Math.random() / 7),
+                    round(5.67 + Math.random() / 7)
+                ]
             ]
 
 
@@ -806,5 +836,4 @@
 
 
     }
-
 </script>
