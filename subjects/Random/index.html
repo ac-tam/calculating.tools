@@ -1,0 +1,167 @@
+<body>
+
+    <body>
+
+
+        <header>
+            <a href="https://calculating.tools/index.html" class="logo">calculating.tools</a>
+            <nav>
+                <ul>
+                </ul>
+
+            </nav>
+        </header>
+
+
+        <div style="margin-bottom: 600px">
+
+            <table id="grades">
+                <tr>
+                    <th>PDF Page</th>
+                    <th>Textbook Page</th>
+                </tr>
+                <tr>
+                    <td><input type="text" id="pdf" oninput="go()" placeholder="0.5"></td>
+                    <td><input type="text" id="textbook" oninput="go()" placeholder="75"></td>
+                </tr>
+            </table>
+            <table style="margin-left: auto; margin-right: auto; margin-top: 25px;">
+                <tr>
+                    <th>Desired Textbook Page</th>
+                </tr>
+                <tr>
+                    <td> <input type="text" id="desired" oninput="go()" placeholder="90"></td>
+                </tr>
+            </table>
+            <p id = "ans" >
+                
+            </p>
+            
+        </div>
+
+    <footer>
+        Copyright &#169; 2020 Andrew Tam. All Rights Reserved
+    </footer>
+
+        <script>
+            function go() {
+                document.getElementById("ans").innerHTML = parseFloat(document.getElementById("pdf").value) - parseFloat(document.getElementById("textbook").value) + parseFloat(document.getElementById("desired").value)
+            }
+        </script>
+
+
+
+    </body>
+
+    <style>
+
+        footer {
+        font-family: calibri, sans-serif;
+        font-size: 15px;
+        width: 100%;
+        margin-top: 2%;
+        height: 20px;
+        background-color: gray;
+        color: white;
+        text-align: center;
+        float: left;
+        }
+
+        div {
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            padding-left: 5px;
+            padding-right: 5px;
+
+            width: 400px;
+            border-radius: 40px;
+            background: rgb(190, 214, 214);
+            color: black;
+            font-family: calibri;
+            text-align: center;
+            box-shadow:  0 8px 8px 0 rgba(0,0,0,.1);
+            margin-bottom: 75   0px;
+            
+        }
+            
+        table,
+        th,
+        td,
+        tr {
+            border: 1px solid black;
+            border-collapse: collapse;
+            background: none;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+
+        td {
+            width: 200px;
+            height: 50px;
+            text-align: center;
+            background: none;
+        }
+
+        table input,
+        a {
+            width: 100%;
+            height: 100%;
+            border: none;
+            font-size: 20px;
+            background: none;
+
+        }
+
+        table {
+            font-size: 20px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 45px;
+            font-family: Calibri;
+            text-decoration: none;
+            padding: 5px;
+
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .tutorial {
+            float: left;
+            margin-top: 100px;
+        }
+        header {
+            background-color: #474646;
+            margin-bottom: 20px;
+        }
+
+
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        nav li {
+            display: inline-block;
+            margin: 10px;
+            padding-right: 0px;
+            padding-top: 5px;
+        }
+
+        header::after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+    </style>
