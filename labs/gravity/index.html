@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Gravity Lab</title>
+    <title>Unity WebGL Player | New Unity Project (2)</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
@@ -16,6 +16,12 @@
           <div id="unity-progress-bar-full"></div>
         </div>
       </div>
+      <div id="unity-footer">
+        <div id="unity-webgl-logo"></div>
+        <div id="unity-fullscreen-button"></div>
+        <div id="unity-build-title">New Unity Project (2)</div>
+      </div>
+    </div>
     <script>
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/gravity.loader.js";
@@ -24,8 +30,8 @@
         frameworkUrl: buildUrl + "/gravity.framework.js",
         codeUrl: buildUrl + "/gravity.wasm",
         streamingAssetsUrl: "StreamingAssets",
-        companyName: "Andrew Tam",
-        productName: "Gravity Lab",
+        companyName: "DefaultCompany",
+        productName: "New Unity Project (2)",
         productVersion: "1.0",
       };
 
@@ -51,7 +57,9 @@
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
           loadingBar.style.display = "none";
-
+          fullscreenButton.onclick = () => {
+            unityInstance.SetFullscreen(1);
+          };
         }).catch((message) => {
           alert(message);
         });
