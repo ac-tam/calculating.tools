@@ -1,126 +1,142 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grade Improvement Calculator</title>
 </head>
 
-    <body>
+<body>
+    <header>
+        <a href="https://calculating.tools/index.html" class="logo">calculating.tools</a>
+    </header>
+
+    <div style="margin-bottom: 50px; width: 50%;">
+
+        <table id="grades">
+            <tr>
+                <th>Category Weight</th>
+                <th>Category Average</th>
+                <th>Number of Assignments</th>
+            </tr>
+            <tr>
+                <td><input type="text" id="weight0" oninput="go()" placeholder="0.5"></td>
+                <td><input type="text" id="avg0" oninput="go()" placeholder="75"></td>
+                <td> <input type="text" id="courses" oninput="go()" placeholder="3"></td>
+            </tr>
+        </table>
+        <table style="margin-top: 25px;">
+            <tr>
+                <th>Current Average</th>
+                <th>Desired Average</th>
+            </tr>
+            <tr>
+                <td><input type="text" id="average" oninput="go()" placeholder="85"></td>
+                <td> <input type="text" id="desired" oninput="go()" placeholder="90"></td>
+            </tr>
+        </table>
+
+    </div>
+
+    <div id="g" style="margin-top: 1px; width: 40%;">
+
+        <table>
+            <tr>
+                <th>Number of Tests</th>
+                <th>Average Test Score</th>
+                <th>Sum of Test Scores</th>
+            </tr>
+
+            <tr>
+                <td>Enter</td>
+                <td>data</td>
+                <td>above</td>
+            </tr>
+        </table>
+
+    </div>
 
 
-        <header>
-            <a href="https://calculating.tools/index.html" class="logo">calculating.tools</a>
-        </header>
+    <div style="margin-top: 200px; width: 50%;">
+        <h1>Grade Improvement Calculator</h1>
+        <p>A common scenario is having a 88 in a class with only one more exam in the semester. In order to raise the B
+            to an A, you would need a minimum test score, and this calculator will compute that value.</p>
+        <h2>Tutorial</h2>
+        <p>
+            1) In the "Category Weight" box, enter the weight of the category in question. It can be exams, homework,
+            etc. and should be between 0 and 1. For example, if exams are 80% of the grade, put 0.8. <br>
+            2) Enter the category average. If you have 2 exams, 80 and 100, enter the average of 90.<br>
+            3) Enter the number of current assignments. <br>
+            4) Enter the current class average, including other assignments not in the same category. <br>
+            5) Enter the desired average. It can be higher, or even lower if you want to know the minimum score you need
+            to maintain an average. (Such as having a 93 and wanting to maintain a 90.)
+        </p>
 
+        <h2>Results</h2>
+        <p>
+            The table will be updated only if the desired grade is achievable. There will be between 1 and 6 rows, each
+            describing a different scenario. THe first column details the number of tests necessary, and the final
+            column details the minimum sum of the test scores. For example, if 3 tests with an average of 90 and a sum
+            of 270 points is in the table, this means that over 3 tests, the test scores must add up to 270. You can get
+            [90, 90, 90], or [100, 100, 70], for example, as long as they add to 270.
+        </p>
 
-        <div style="float: left; margin-bottom: 600px;">
-
-            <table id="grades">
-                <tr>
-                    <th>Category Weight</th>
-                    <th>Category Average</th>
-                    <th>Number of Assignments</th>
-                </tr>
-                <tr>
-                    <td><input type="text" id="weight0" oninput="go()" placeholder="0.5"></td>
-                    <td><input type="text" id="avg0" oninput="go()" placeholder="75"></td>
-                    <td> <input type="text" id="courses" oninput="go()" placeholder="3"></td>
-                </tr>
-            </table>
-            <table style="margin-left: auto; margin-right: auto; margin-top: 25px;">
-                <tr>
-                    <th>Current Average</th>
-                    <th>Desired Average</th>
-                </tr>
-                <tr>
-                    <td><input type="text" id="average" oninput="go()" placeholder="85"></td>
-                    <td> <input type="text" id="desired" oninput="go()" placeholder="90"></td>
-                </tr>
-            </table>
-            
-        </div>
-
-        <div id="g" style="float: right">
-        
-            <table>
-                <tr>
-                    <th>Number of Tests</th>
-                    <th>Average Test Score</th>
-                    <th>Sum of Test Scores</th>
-                </tr>
-
-                <tr>
-                    <td>Enter data</td>
-                    <td>to see</td>
-                    <td>results</td>
-                </tr>
-            </table>
-
-        </div>
+    </div>
 
     <footer>
-        Copyright &#169; 2020 Andrew Tam. All Rights Reserved
+        Copyright &#169; 2021 Andrew Tam. All Rights Reserved
     </footer>
 
-        <script>
-            var max = 1;
+    <script>
+        var max = 1;
 
-            function addRow() {
-                max++;
-                var tableRow = document.createElement("tr")
-                tableRow.innerHTML = `
+        function addRow() {
+            max++;
+            var tableRow = document.createElement("tr")
+            tableRow.innerHTML = `
             <td><input type="text" id="weight${max}" placeholder="Category Weight"></td>
             <td><input type="text" id="avg${max}" placeholder="Category Average"></td>
             <td>Only required for Test Category (1st Row)</td>`
+            document.getElementById("grades").appendChild(tableRow)
+        }
 
+        function go() {
+            document.getElementById("g").innerHTML = ""
+            var length = 2;
+            var sum = 0;
+            var currentCourseAverage = parseFloat(document.getElementById("avg0").value)
+            var courseAverage = parseFloat(document.getElementById("weight0").value) * parseFloat(document.getElementById("avg0").value)
+            var numCourses = parseFloat(document.getElementById("courses").value)
 
-                document.getElementById("grades").appendChild(tableRow)
-            }
-
-            function go() {
-                document.getElementById("g").innerHTML = ""
-                var length = 2;
-                var sum = 0;
-                var currentCourseAverage = parseFloat(document.getElementById("avg0").value)
-                var courseAverage = parseFloat(document.getElementById("weight0").value) * parseFloat(document
-                    .getElementById("avg0").value) // * 
-                var numCourses = parseFloat(document.getElementById("courses").value)
-
-
-                sum = parseFloat(document.getElementById("average").value) - courseAverage
-                var newTest = (parseFloat(document.getElementById("desired").value) - sum) * 1 / parseFloat(document
-                    .getElementById("weight0").value)
-
-
-                var pts = []
-                var count = []
-                var avg = []
-                for (var x = 1; x < 7; x++) {
-                    var y = newTest * numCourses - currentCourseAverage * numCourses + newTest * x
-                    if (Math.abs(y) <= 100 * x) {
-                        pts.push(round(y))
-                        count.push(x)
-                        avg.push(round(y / x))
-
-                    }
+            sum = parseFloat(document.getElementById("average").value) - courseAverage
+            var newTest = (parseFloat(document.getElementById("desired").value) - sum) * 1 / parseFloat(document.getElementById("weight0").value)
+            var pts = []
+            var count = []
+            var avg = []
+            for (var x = 1; x < 7; x++) {
+                var y = newTest * numCourses - currentCourseAverage * numCourses + newTest * x
+                if (Math.abs(y) <= 100 * x) {
+                    pts.push(round(y))
+                    count.push(x)
+                    avg.push(round(y / x))
                 }
-                document.getElementById('g').innerHTML = makeTable(pts, count, avg)
             }
+            document.getElementById('g').innerHTML = makeTable(pts, count, avg)
+        }
 
-
-
-            function makeTable(x, y, z) {
-                if (x.length == 0)
-                    return " <table><tr> <th>Number of Tests</th><th>Average Test Score</th><th>Sum of Test Scores</th> </tr> <tr>    <td>ERROR</td> <td>Enter More Data</td> <td>or Desired Grade Impossible</td></tr>       </table>"
-                var table = `<table>
+        function makeTable(x, y, z) {
+            if (x.length == 0)
+                return " <table><tr> <th>Number of Tests</th><th>Average Test Score</th><th>Sum of Test Scores</th> </tr> <tr>    <td>ERROR</td> <td>Enter More Data</td> <td>or Desired Grade Impossible</td></tr>       </table>"
+            var table = `<table>
             <tr>
                 <th>Number of Tests</th>
                 <th>Average Test Score</th>
                 <th>Sum of Test Scores</th>
 
             </tr>`
-                for (var i = 0; i < x.length; i++)
-                    table += `
+            for (var i = 0; i < x.length; i++)
+                table += `
                 <tr>
                     <td>${(y[i])}</td>
                     <td>${(z[i])}</td>
@@ -128,32 +144,33 @@
                 </tr>
             `
 
-                return table + "</table>"
+            return table + "</table>"
 
 
-            }
+        }
 
-            function round(num) {
-                return Math.round(num * 100) / 100
-            }
-        </script>
+        function round(num) {
+            return Math.round(num * 100) / 100
+        }
+    </script>
 
 
 
-    </body>
+</body>
+
 </html>
 
 <style>
     footer {
-    font-family: calibri, sans-serif;
-    font-size: 15px;
-    width: 100%;
-    margin-top: 2%;
-    height: 20px;
-    background-color: gray;
-    color: white;
-    text-align: center;
-    float: left;
+        font-family: Calibri, sans-serif;
+        font-size: 15px;
+        width: 100%;
+        margin-top: 2%;
+        height: 20px;
+        background-color: gray;
+        color: white;
+        text-align: center;
+        float: left;
     }
 
     div {
@@ -170,11 +187,14 @@
         color: black;
         font-family: calibri;
         text-align: center;
-        box-shadow:  0 8px 8px 0 rgba(0,0,0,.1);
+        box-shadow: 0 8px 8px 0 rgba(0, 0, 0, .1);
+        margin-left: auto;
+        margin-right: auto;
 
-        
+
+
     }
-        
+
     table,
     th,
     td,
@@ -182,14 +202,18 @@
         border: 1px solid black;
         border-collapse: collapse;
         background: none;
+        margin-left: auto;
+        margin-right: auto;
     }
-    
+
 
     td {
         width: 200px;
         height: 50px;
         text-align: center;
         background: none;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     table input,
@@ -227,6 +251,7 @@
         float: left;
         margin-top: 100px;
     }
+
     header {
         background-color: #474646;
         margin-bottom: 20px;
@@ -251,5 +276,10 @@
         display: table;
         clear: both;
     }
-</style>
 
+    p {
+        margin-left: 10%;
+        margin-right: 10%;
+        font-size: 18px;
+    }
+</style>
