@@ -13,8 +13,13 @@ ul {
 
 li {
     padding-left: 10px;
-    margin: 5px;
 }
+
+@media (max-width: 600px) {
+    li {
+        margin: 20px;
+    }
+  }
 
 header {
     background-color: #474646;
